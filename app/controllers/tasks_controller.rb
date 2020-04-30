@@ -3,6 +3,9 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
+  def show
+  end
+
   def create
     @task = Task.new(task_params)
 
@@ -36,6 +39,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:done, :todo, :imortant)
+    params.require(:task).permit(:done, :todo, :important)
   end
 end
