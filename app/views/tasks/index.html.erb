@@ -1,16 +1,22 @@
-<%= render 'form' %>
+<center><%= render 'form' %></center>
 
-<h1>Listing Tasks</h1>
+<center><h1>Listing Tasks</h1></center>
 
-<table>
+<center><table>
   <% @tasks.each do |task| %>
     <tr>
-      <td><%= task.done %></td>
+      <% if task.done.nil? %>
+        <td><%= link_to 'Done', edit_task_path(task, { task:{ done: '1' } })%></td>
+      <% else %>
+        <td><strong> Task Complete </strong></td>
+      <% end %>
       <td><%= task.todo %></td>
-      <td><%= task.important %></td>
+      <% unless task.important.nil? %>
+        <td><strong> Important </strong></td>
+      <% end %>
       <td><%= link_to 'D', task_path(task),
                                  method: :delete,
                                  data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
-</table>
+</table></center>

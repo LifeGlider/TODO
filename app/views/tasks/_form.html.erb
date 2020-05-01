@@ -1,15 +1,8 @@
 <%= form_with scope: :task, local: true do |form| %>
-  <p>
-    <%= form.label :important %><br>
-    <%= form.check_box :important, {}, '1', '0' %>
-  </p>
+  <%= form.label :important %>
+  <%= form.check_box :important, {}, '1', '0' %>
 
-  <p>
-    <%= form.label :todo %><br>
-    <%= form.text_field :todo %>
-  </p>
+  <%= form.text_field :todo %>
 
-  <p>
-    <%= form.submit %>
-  </p>
+  <%= form.submit %>
 <% end %>
