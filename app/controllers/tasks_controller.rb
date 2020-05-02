@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all.sort_by { |a| -a[:important]}
+    @tasks = Task.all
   end
-
+  
   def show
     @task = Task.find(params[:id])
   end
