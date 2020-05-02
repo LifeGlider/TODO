@@ -15,7 +15,7 @@ default: &default
   host: localhost
   port: 5432
   username: bohdan
-  password: <%= ENV['TODO_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials.TODO_DATABASE_PASSWORD %>
   pool: 5
 
 development:
