@@ -1,0 +1,13 @@
+<center>
+<%= form_with model: @task, local: true do |form| %>
+  <%= form.label :done %>
+  <%= form.check_box :done %>
+
+  <%= form.label :important %>
+  <%= form.check_box :important %>
+
+  <%= form.text_field :todo %>
+
+  <%= form.submit %>
+<% end %>
+</center>

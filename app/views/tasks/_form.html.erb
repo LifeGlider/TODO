@@ -1,10 +1,12 @@
-<%= form_with scope: :task, local: true do |form| %>
-  <p>
-    <%= form.label :important %><br>
-    <%= form.check_box :important %>
-  </p>
+<center>
+  <%= form_with scope: :task, local: true do |form| %>
+    <p>
+      <%= form.label :important %><br>
+      <%= form.check_box :important %>
+    </p>
 
-  <%= form.text_field :todo %>
+    <%= form.text_field :todo %>
 
-  <%= form.submit %>
-<% end %>
+    <%= form.submit %>
+  <% end %>
+</center>
