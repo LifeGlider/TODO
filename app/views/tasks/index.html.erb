@@ -1,0 +1,16 @@
+<%= render 'form' %>
+
+<h1>Listing Tasks</h1>
+
+<table>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.done %></td>
+      <td><%= task.todo %></td>
+      <td><%= task.important %></td>
+      <td><%= link_to 'D', task_path(task),
+                                 method: :delete,
+                                 data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
