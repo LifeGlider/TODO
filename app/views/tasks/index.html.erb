@@ -5,25 +5,25 @@
 <center><table>
   <% @tasks.each do |task| %>
     <tr>
-      <% unless task.important.eql?(0) %>
-        <% if task.done.eql?(0) %>
-          <td><span style="background-color:#ffcccb;">
-            <%= link_to task.todo, task_path(task, { task:{ done: '1' } }),
-                                   method: "patch",
-                                   data: { confirm: 'You done?' } %>
-          </span></td>
-        <% else %>
+      <% if task.important %>
+        <% if task.done %>
           <td><span style="background-color:#ffcccb;">
             <s><%= task.todo %></s>
           </span></td>
+        <% else %>
+          <td><span style="background-color:#ffcccb;">
+            <%= link_to task.todo, task_path(task, { task: { done: true } }),
+                                   method: "patch",
+                                   data: { confirm: 'You done?' } %>
+          </span></td>
         <% end %>
       <% else %>
-        <% if task.done.eql?(0) %>
-          <td><%= link_to task.todo, task_path(task, { task:{ done: '1' } }),
+        <% if task.done %>
+          <td><s><%= task.todo %></s></td>
+        <% else %>
+          <td><%= link_to task.todo, task_path(task, { task: { done: true } }),
                                      method: "patch",
                                      data: { confirm: 'You done?' } %></td>
-        <% else %>
-          <td><s><%= task.todo %></s></td>
         <% end %>
       <% end %>
       <td><%= task.created_at.strftime("%Y-%m-%d") %></td>
