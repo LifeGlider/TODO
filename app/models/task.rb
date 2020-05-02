@@ -1,5 +1,4 @@
 class Task < ApplicationRecord
-  validates :done, presence: true
   validates :todo, presence: true
-  validates :important, presence: true
+  validates_inclusion_of :done, :important, in: [true, false]
 end

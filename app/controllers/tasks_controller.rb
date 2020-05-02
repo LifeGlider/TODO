@@ -9,7 +9,6 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.done = 0
 
     if @task.save
       redirect_to tasks_path, notice: 'Complete'
