@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2020_04_29_154820) do
   enable_extension "plpgsql"
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "done"
     t.text "todo"
-    t.integer "important"
+    t.boolean "done", default: false, null: false
+    t.boolean "important", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
