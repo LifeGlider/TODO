@@ -6,12 +6,12 @@
   <% @tasks.each do |task| %>
     <tr>
       <% if task.done %>
-        <td><%= link_to 'Done', task_path(task, { task: { done: true } }), method: "patch" %></td>
-      <% else %>
         <td><strong> Task Complete </strong></td>
+      <% else %>
+        <td><%= link_to 'Done', task_path(task, { task: { done: true } }), method: "patch" %></td>
       <% end %>
       <td><%= task.todo %></td>
-      <% unless task.important %>
+      <% if task.important %>
         <td><strong> Important </strong></td>
       <% end %>
       <td><%= link_to 'Edit', edit_task_path(task) %></td>
