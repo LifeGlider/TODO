@@ -5,19 +5,32 @@
 <center><table>
   <% @tasks.each do |task| %>
     <tr>
-      <% if task.done.eql?(0) %>
-        <td><%= link_to 'Done', task_path(task, { task:{ done: '1' } }), method: "patch" %></td>
-      <% else %>
-        <td><strong> Task Complete </strong></td>
-      <% end %>
-      <td><%= task.todo %></td>
       <% unless task.important.eql?(0) %>
-        <td><strong> Important </strong></td>
+        <% if task.done.eql?(0) %>
+          <td><span style="background-color:#ffcccb;">
+            <%= link_to task.todo, task_path(task, { task:{ done: '1' } }),
+                                   method: "patch",
+                                   data: { confirm: 'You done?' } %>
+          </span></td>
+        <% else %>
+          <td><span style="background-color:#ffcccb;">
+            <s><%= task.todo %></s>
+          </span></td>
+        <% end %>
+      <% else %>
+        <% if task.done.eql?(0) %>
+          <td><%= link_to task.todo, task_path(task, { task:{ done: '1' } }),
+                                     method: "patch",
+                                     data: { confirm: 'You done?' } %></td>
+        <% else %>
+          <td><s><%= task.todo %></s></td>
+        <% end %>
       <% end %>
+      <td><%= task.created_at.strftime("%Y-%m-%d") %></td>
       <td><%= link_to 'Edit', edit_task_path(task) %></td>
       <td><%= link_to 'D', task_path(task),
-                                 method: :delete,
-                                 data: { confirm: 'Are you sure?' } %></td>
+                           method: :delete,
+                           data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table></center>
