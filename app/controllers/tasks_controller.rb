@@ -36,6 +36,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:done, :todo, :imortant)
+    params.require(:task).permit(:done, :todo, :important)
   end
 end
