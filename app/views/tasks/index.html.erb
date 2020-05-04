@@ -2,6 +2,20 @@
 
 <center><h1>Listing Tasks</h1></center>
 
+<style>
+  div {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+</style>
+
+<center>
+  <%= link_to 'Sort by Alphabet', tasks_path(sort_type: :todo, sort_direction: :asc) %>
+  <%= link_to 'Sort by Date', tasks_path(sort_type: :created_at) %>
+</center>
+
+<br>
+
 <center><table>
   <% @tasks.each do |task| %>
     <tr>

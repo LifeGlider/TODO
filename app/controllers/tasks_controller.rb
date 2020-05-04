@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all.order(important: :desc)
+    sort_direction = params[:sort_direction] || :desc
+    sort_type = params[:sort_type] || :created_at
+    page_number = params[:page] || 0
+    @tasks = Task.order(important: :desc, sort_type => sort_direction).page(page_number)
   end
 
   def show
