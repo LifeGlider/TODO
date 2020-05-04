@@ -15,7 +15,6 @@
 </center>
 
 <br>
-
 <center><table>
   <% @tasks.each do |task| %>
     <tr>
@@ -27,7 +26,7 @@
         <% else %>
           <td><span style="background-color:#ffcccb;">
             <%= link_to task.todo, task_path(task, { task: { done: true } }),
-                                   method: "patch",
+                                   method: :patch,
                                    data: { confirm: 'You done?' } %>
           </span></td>
         <% end %>
@@ -36,7 +35,7 @@
           <td><s><%= task.todo %></s></td>
         <% else %>
           <td><%= link_to task.todo, task_path(task, { task: { done: true } }),
-                                     method: "patch",
+                                     method: :patch,
                                      data: { confirm: 'You done?' } %></td>
         <% end %>
       <% end %>
