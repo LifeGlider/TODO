@@ -13,10 +13,14 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
 
-    if @task.save
-      redirect_to tasks_path, notice: 'Complete'
+    if uniq_todo?(@task.todo)
+      if @task.save
+        redirect_to tasks_path, notice: 'Complete'
+      else
+        redirect_to tasks_path, notice: 'Something went wrong!'
+      end
     else
-      redirect_to tasks_path, notice: 'Something went wrong!'
+      redirect_to tasks_path, notice: "This task is not unique!"
     end
   end
 
@@ -48,5 +52,16 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:done, :todo, :important)
+  end
+
+  def uniq_todo?(text)
+    tasks = Task.all
+    tasks.each do |task|
+      if text.downcase.delete(' ') == task.todo.downcase.delete(' ')
+        return false
+      end
+    end
+
+    return true
   end
 end
