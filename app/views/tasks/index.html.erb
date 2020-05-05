@@ -2,6 +2,12 @@
 
 <center><h1>Listing Tasks</h1></center>
 
+<center>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+</center>
+<br>
 <style>
   div {
     overflow: hidden;
