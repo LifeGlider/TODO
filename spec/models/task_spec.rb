@@ -9,11 +9,6 @@ RSpec.describe Task, type: :model do
     expect(create(:task, todo: nil)).to_not be_valid
   end
 
-  it "is not valid with similar todo" do
-    create(:task, todo: 'thisisatest')
-    expect(create(:task, todo: ' THIS IS A TEST ')).to_not be_valid
-  end
-
   it "is not valid with empty todo" do
     expect(create(:task, todo: ' ')).to_not be_valid
   end
