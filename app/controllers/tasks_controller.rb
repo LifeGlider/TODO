@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all.order(important: :desc)
+    sort_direction = params[:sort_direction] || :desc
+    sort_type = params[:sort_type] || :created_at
+    @tasks = Task.order(important: :desc, sort_type => sort_direction).page(params[:page])
   end
 
   def show
@@ -11,9 +13,11 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to tasks_path, notice: 'Complete'
+      flash[:notice] = 'Task successfully created'
+      redirect_to tasks_path
     else
-      redirect_to tasks_path, notice: 'Something went wrong!'
+      flash[:notice] = 'Something went wrong!'
+      redirect_to tasks_path
     end
   end
 
@@ -25,9 +29,11 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-      redirect_to tasks_path, notice: 'Complete'
+      flash[:notice] = 'Task successfully updated'
+      redirect_to tasks_path
     else
-      redirect_to tasks_path, notice: 'Something went wrong'
+      flash[:notice] = 'Something went wrong!'
+      redirect_to tasks_path
     end
   end
 
@@ -35,9 +41,11 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.destroy
-      redirect_to tasks_path, notice: 'Complete'
+      flash[:notice] = 'Task successfully deleted'
+      redirect_to tasks_path
     else
-      redirect_to tasks_path, notice: 'Something went wrong'
+      flash[:notice] = 'Something went wrong!'
+      redirect_to tasks_path
     end
   end
 

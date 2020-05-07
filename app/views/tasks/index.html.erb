@@ -2,6 +2,18 @@
 
 <center><h1>Listing Tasks</h1></center>
 
+<center>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+</center>
+<br>
+<center>
+  <%= link_to 'Sort by Alphabet', tasks_path(sort_type: :todo, sort_direction: :asc) %>
+  <%= link_to 'Sort by Date', tasks_path(sort_type: :created_at) %>
+</center>
+
+<br>
 <center><table>
   <% @tasks.each do |task| %>
     <tr>
@@ -13,7 +25,7 @@
         <% else %>
           <td><span style="background-color:#ffcccb;">
             <%= link_to task.todo, task_path(task, { task: { done: true } }),
-                                   method: "patch",
+                                   method: :patch,
                                    data: { confirm: 'You done?' } %>
           </span></td>
         <% end %>
@@ -22,7 +34,7 @@
           <td><s><%= task.todo %></s></td>
         <% else %>
           <td><%= link_to task.todo, task_path(task, { task: { done: true } }),
-                                     method: "patch",
+                                     method: :patch,
                                      data: { confirm: 'You done?' } %></td>
         <% end %>
       <% end %>
@@ -34,3 +46,5 @@
     </tr>
   <% end %>
 </table></center>
+<br>
+<center><%= paginate @tasks %></center>
