@@ -14,10 +14,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      flash[:notice] = "Task successfully created"
+      flash[:notice] = 'Task successfully created'
       redirect_to tasks_path
     else
-      flash[:notice] = "Something went wrong!"
+      flash[:notice] = 'Something went wrong!'
       redirect_to tasks_path
     end
   end
@@ -30,10 +30,10 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-      flash[:notice] = "Task successfully updated"
+      flash[:notice] = 'Task successfully updated'
       redirect_to tasks_path
     else
-      flash[:notice] = "Something went wrong!"
+      flash[:notice] = 'Something went wrong!'
       redirect_to tasks_path
     end
   end
@@ -42,10 +42,10 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.destroy
-      flash[:notice] = "Task successfully deleted"
+      flash[:notice] = 'Task successfully deleted'
       redirect_to tasks_path
     else
-      flash[:notice] = "Something went wrong!"
+      flash[:notice] = 'Something went wrong!'
       redirect_to tasks_path
     end
   end
