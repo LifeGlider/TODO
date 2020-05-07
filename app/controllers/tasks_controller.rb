@@ -42,7 +42,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.destroy
-      flash[:notice] = "Task successfully updated"
+      flash[:notice] = "Task successfully deleted"
       redirect_to tasks_path
     else
       flash[:notice] = "Something went wrong!"
