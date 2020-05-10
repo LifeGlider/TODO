@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TODO</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'main_vue' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="app">
+      <tasks :tasks="<%= @tasks.to_json %>">
+      </tasks>
+      <center><%= paginate @tasks %></center>
+    </div>
   </body>
 </html>
