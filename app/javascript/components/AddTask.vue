@@ -13,15 +13,21 @@ export default {
   name: "AddTask",
   data() {
     return {
+      important: false,
       todo: ''
     }
   },
   methods: {
     addTask() {
-      const newTask = {
+      axios.post('/task', {
         todo: this.todo
-      }
-      this.$emit('add-task', newTask);
+      })
+      .then(function (response) {
+      console.log(response);
+      })
+      .catch(function (error) {
+      console.log(error);
+      });
     }
   }
 }
