@@ -23,6 +23,7 @@ export default {
     addTask(e) {
       e.preventDefault();
       this.$store.dispatch('SAVE_TASK', {important: this.important, todo: this.todo});
+      e.target.reset();
     }
   }
 }

@@ -21,12 +21,12 @@ export const store = new Vuex.Store({
     },
 
     ADD_TASK: (state, payload) => {
-      state.tasks.push(payload)
+      state.tasks.unshift(payload)
     },
 
     EDIT_TASK: (state, payload) => {
       state.tasks = state.tasks.filter(task => task.id !== payload.id);
-      state.tasks.push(payload)
+      state.tasks.unshift(payload)
     },
 
     REMOVE_TASK: (state, payload) => {
@@ -37,6 +37,11 @@ export const store = new Vuex.Store({
   actions: {
     GET_TASKS: async (context, payload) => {
       let {data} = await axios.get('http://localhost:3000/tasks');
+      context.commit('SET_TASKS', data);
+    },
+
+    SORT_TASKS: async (context, payload) => {
+      let {data} = await axios.get(`http://localhost:3000/tasks?sort_type=${payload.sort_type}&sort_direction=${payload.sort_direction}`);
       context.commit('SET_TASKS', data);
     },
 

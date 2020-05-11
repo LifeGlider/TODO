@@ -3,14 +3,15 @@
     <p v-bind:class="{'is-done': task.done}">
       <input type="checkbox" v-model="task.done" :id="task.id" v-on:change="taskDone">
       {{task.todo}}
+      <label class="date">{{task.created_at.substring(0, 10)}}</label>
       <button class="edit" v-on:click="visible=!visible">Edit</button>
       <button class="del" @click="deleteTask">Delete</button>
     </p><br>
     <form class="edit-task" @submit="editTask" v-show="visible">
       <input type="checkbox" v-model="task.done" name="done">
-      <label for="done">Done</label>
+      <label class="lbl" for="done">Done</label>
       <input type="checkbox" v-model="task.important" name="important">
-      <label for="important">Important</label>
+      <label class="lbl" for="important">Important</label>
       <input type="text" v-model="task.todo" name="todo" placeholder="Edit here...">
       <input type="submit" value="Submit" class="btn" @click="hideEdit">
     </form>
@@ -59,7 +60,7 @@
     display: flex;
   }
 
-  label {
+  .lbl {
     margin: auto;
     flex: 0.5;
     padding: 10px;
@@ -93,6 +94,13 @@
 
   .is-important {
     background-color: tomato;
+  }
+
+  .date {
+    border: none;
+    padding: 5px 9px;
+    margin: auto;
+    float: right;
   }
 
   .edit {

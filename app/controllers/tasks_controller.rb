@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
   def index
     sort_direction = params[:sort_direction] || :desc
-    sort_type = params[:sort_type] || :created_at
-    @tasks = Task.order(important: :desc, sort_type => sort_direction).page(params[:page])
+    sort_type = params[:sort_type] || :updated_at
+    @tasks = Task.order(important: :desc, sort_type => sort_direction)
 
     render json: @tasks
   end
