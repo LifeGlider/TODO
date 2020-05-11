@@ -41,7 +41,8 @@ export const store = new Vuex.Store({
     },
 
     SORT_TASKS: async (context, payload) => {
-      let {data} = await axios.get(`/tasks?sort_type=${payload.sort_type}&sort_direction=${payload.sort_direction}`);
+      let {data} = await axios.get('/tasks',
+      { params: { sort_type: payload.sort_type, sort_direction: payload.sort_direction}});
       context.commit('SET_TASKS', data);
     },
 
@@ -63,13 +64,3 @@ export const store = new Vuex.Store({
     }
   },
 })
-
-
-
-/*axios.get('http://localhost:3000/')
-  .then(function (response) {
-  console.log(response);
-  })
-  .catch(function (error) {
-  console.log(error);
-})*/

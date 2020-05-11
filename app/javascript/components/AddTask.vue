@@ -37,14 +37,15 @@ export default {
 
   .lbl {
     margin: auto;
-    flex: 0.5;
+    flex: 1;
     padding: 5px;
   }
 
   input[type="checkbox"] {
-    flex: 1;
     border: 1px #333;
     margin: auto;
+    padding: 5px;
+    flex: 0.5;
   }
 
   input[type="text"] {
