@@ -2,6 +2,7 @@
   <div>
     <form @submit="addTask">
       <input type="checkbox" v-model="important" name="important">
+      <label class="lbl" for="important">Important</label>
       <input type="text" v-model="todo" name="todo" placeholder="Add Task...">
       <input type="submit" value="Submit" class="btn">
     </form>
@@ -32,6 +33,12 @@ export default {
 <style scoped>
   form {
     display: flex;
+  }
+
+  .lbl {
+    margin: auto;
+    flex: 0.5;
+    padding: 5px;
   }
 
   input[type="checkbox"] {
