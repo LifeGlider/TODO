@@ -3,27 +3,19 @@ class TasksController < ApplicationController
     sort_direction = params[:sort_direction] || :desc
     sort_type = params[:sort_type] || :created_at
     @tasks = Task.order(important: :desc, sort_type => sort_direction).page(params[:page])
-  end
 
-  def show
-    @task = Task.find(params[:id])
+    render json: @tasks
   end
 
   def create
     @task = Task.new(task_params)
-    binding.pry
 
     if @task.save
       flash[:notice] = 'Task successfully created'
-      redirect_to tasks_path
+      render json: @task
     else
       flash[:notice] = 'Something went wrong!'
-      redirect_to tasks_path
     end
-  end
-
-  def edit
-    @task = Task.find(params[:id])
   end
 
   def update
@@ -31,10 +23,9 @@ class TasksController < ApplicationController
 
     if @task.update(task_params)
       flash[:notice] = 'Task successfully updated'
-      redirect_to tasks_path
+      render json: @task
     else
       flash[:notice] = 'Something went wrong!'
-      redirect_to tasks_path
     end
   end
 
@@ -43,10 +34,9 @@ class TasksController < ApplicationController
 
     if @task.destroy
       flash[:notice] = 'Task successfully deleted'
-      redirect_to tasks_path
+      render json: @task
     else
       flash[:notice] = 'Something went wrong!'
-      redirect_to tasks_path
     end
   end
 

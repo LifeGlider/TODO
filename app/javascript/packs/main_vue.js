@@ -54,9 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // Then uncomment the code block below:
 
 import TurbolinksAdapter from 'vue-turbolinks'
-import axios from 'axios-on-rails'
+import axios from 'axios'
 import Vue from 'vue/dist/vue.esm'
 import Tasks from '../components/Tasks.vue'
+import { store } from '../store/store.js'
 
 Vue.use(TurbolinksAdapter)
 
@@ -64,7 +65,9 @@ document.addEventListener('turbolinks:load', () => {
   axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
   new Vue({
+    store: store,
     el: '#app',
-    components: { tasks: Tasks }
+    components: { Tasks },
+    render: h => h(Tasks)
   });
 })

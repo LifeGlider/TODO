@@ -1,24 +1,35 @@
 <template>
   <div>
-    <Header />
-    <AddTask />
-    <div :key="task.id" v-for="task in tasks">
-      <Task :task="task" />
+    <Header /><br>
+    <center><p>
+      <button class="btn">Sort by Alphabet</button>
+      <button class="btn"> Sort by Date</button>
+    </p></center><br>
+    <AddTask /><br>
+    <div v-for="task in tasks" :key="task.id">
+      <Task :task="task" v-on:edit-task="$emit('edit-task', false)"/>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios-on-rails'
-import Header from './layout/Header.vue';
-import AddTask from './AddTask.vue';
-import Task from './Task.vue';
+  import axios from 'axios';
+  import Header from './layout/Header';
+  import AddTask from './AddTask';
+  import Task from './Task.vue';
 
-export default {
-  name: "Tasks",
-  components: { Header, AddTask, Task },
-  props: ['tasks'],
-}
+  export default {
+    name: "Tasks",
+    components: { Header, AddTask, Task },
+    created() {
+      this.$store.dispatch('GET_TASKS');
+    },
+    computed: {
+      tasks(){
+        return this.$store.getters.TASKS;
+      }
+    }
+  }
 </script>
 
 <style>

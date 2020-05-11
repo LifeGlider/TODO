@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "AddTask",
   data() {
@@ -18,16 +20,9 @@ export default {
     }
   },
   methods: {
-    addTask() {
-      axios.post('/task', {
-        todo: this.todo
-      })
-      .then(function (response) {
-      console.log(response);
-      })
-      .catch(function (error) {
-      console.log(error);
-      });
+    addTask(e) {
+      e.preventDefault();
+      this.$store.dispatch('SAVE_TASK', {important: this.important, todo: this.todo});
     }
   }
 }
@@ -40,6 +35,7 @@ export default {
 
   input[type="checkbox"] {
     flex: 1;
+    border: 1px #333;
     margin: auto;
   }
 

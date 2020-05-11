@@ -5,9 +5,11 @@
 </template>
 
 <script>
-export default {
-  name: "Header"
-}
+  import axios from 'axios';
+
+  export default {
+    name: "Header"
+  }
 </script>
 
 <style scoped>
