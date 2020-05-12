@@ -20,18 +20,25 @@
 
   export default {
     name: "Tasks",
+
     components: { Header, AddTask, Task },
+
     mounted() {
       this.$store.dispatch('GET_TASKS');
     },
+
     computed: {
       tasks(){
         return this.$store.getters.TASKS;
       }
     },
+
     methods: {
       sortBy(type, direction) {
-        this.$store.dispatch('SORT_TASKS', { sort_type: type, sort_direction: direction });
+        this.$store.dispatch('SORT_TASKS', {
+          sort_type: type, 
+          sort_direction: direction
+        });
       }
     }
   }

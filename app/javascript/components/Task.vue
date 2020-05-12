@@ -23,33 +23,47 @@
 
   export default {
     name: "Task",
+
     props: ["task"],
+
     data() {
       return {
         visible: false
       }
     },
+
     methods: {
       showEdit() {
         this.visible = true
       },
+
       hideEdit() {
         this.visible = false
       },
+
       taskDone(e) {
         e.preventDefault();
-        this.$store.dispatch('UPDATE_TASK', {id: this.task.id, done: this.task.done});
+        this.$store.dispatch('UPDATE_TASK', {
+          id: this.task.id,
+          done: this.task.done
+        });
       },
+
       editTask(e) {
         e.preventDefault();
         let visible = false;
-        this.$store.dispatch('UPDATE_TASK', 
-        {id: this.task.id, done: this.task.done, important: this.task.important, todo: this.task.todo});
+        this.$store.dispatch('UPDATE_TASK', {
+          id: this.task.id,
+          done: this.task.done,
+          important: this.task.important,
+          todo: this.task.todo
+        });
         return visible;
       },
+
       deleteTask(e) {
         e.preventDefault();
-        this.$store.dispatch('DELETE_TASK', {id: this.task.id});
+        this.$store.dispatch('DELETE_TASK', { id: this.task.id });
       }
     }
   }

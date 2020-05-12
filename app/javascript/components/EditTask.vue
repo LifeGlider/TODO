@@ -14,18 +14,25 @@
 
   export default {
     name: "EditTask",
+
     props: ["task"],
+
     data() {
       return {
         visible: false
       }
     },
+
     methods: {
       editTask(e) {
         e.preventDefault();
         let visible = false;
-        this.$store.dispatch('UPDATE_TASK', 
-        {id: this.task.id, done: this.task.done, important: this.task.important, todo: this.task.todo});
+        this.$store.dispatch('UPDATE_TASK', {
+          id: this.task.id, 
+          done: this.task.done, 
+          important: this.task.important, 
+          todo: this.task.todo
+        });
         return visible;
       }
     }
