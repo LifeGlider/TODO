@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
 import TurbolinksAdapter from 'vue-turbolinks'
 import axios from 'axios'
 import Vue from 'vue/dist/vue.esm'
-import Vuetify from 'vuetify'
 import Tasks from '../components/Tasks.vue'
 import { store } from '../store/store.js'
 
