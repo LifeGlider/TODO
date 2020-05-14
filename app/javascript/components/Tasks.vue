@@ -13,7 +13,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
   import Header from './layout/Header';
   import AddTask from './AddTask';
   import Task from './Task.vue';

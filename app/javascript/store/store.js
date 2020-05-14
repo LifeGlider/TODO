@@ -3,6 +3,7 @@ import Vue from 'vue/dist/vue.esm'
 import Vuex from 'vuex'
 
 Vue.use(Vuex);
+axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
 export const store = new Vuex.Store({
   state: {

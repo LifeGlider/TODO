@@ -62,8 +62,6 @@ import { store } from '../store/store.js'
 Vue.use(TurbolinksAdapter)
 
 document.addEventListener('turbolinks:load', () => {
-  axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-
   new Vue({
     store: store,
     el: '#app',

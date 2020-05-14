@@ -9,9 +9,9 @@
     </p><br>
     <form class="edit-task" @submit="editTask" v-show="visible">
       <input type="checkbox" v-model="task.done" name="done">
-      <label class="lbl" for="done">Done</label>
+      <label class="label" for="done">Done</label>
       <input type="checkbox" v-model="task.important" name="important">
-      <label class="lbl" for="important">Important</label>
+      <label class="label" for="important">Important</label>
       <input type="text" v-model="task.todo" name="todo" placeholder="Edit here...">
       <input type="submit" value="Submit" class="btn" @click="hideEdit">
     </form>
@@ -19,8 +19,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
-
   export default {
     name: "Task",
 
@@ -51,7 +49,6 @@
 
       editTask(e) {
         e.preventDefault();
-        let visible = false;
         this.$store.dispatch('UPDATE_TASK', {
           id: this.task.id,
           done: this.task.done,
@@ -74,7 +71,7 @@
     display: flex;
   }
 
-  .lbl {
+  .label {
     margin: auto;
     flex: 0.5;
     padding: 10px;

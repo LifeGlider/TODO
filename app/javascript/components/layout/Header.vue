@@ -5,8 +5,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
-
   export default {
     name: "Header"
   }
@@ -18,10 +16,5 @@
     color: #fff;
     padding: 10px;
     text-align: center;
-  }
-
-  .header a {
-    color: #fff;
-    padding-right: 5px;
   }
 </style>

@@ -2,7 +2,7 @@
   <div>
     <form @submit="addTask">
       <input type="checkbox" v-model="important" name="important">
-      <label class="lbl" for="important">Important</label>
+      <label class="label" for="important">Important</label>
       <input type="text" v-model="todo" name="todo" placeholder="Add Task...">
       <input type="submit" value="Submit" class="btn">
     </form>
@@ -10,16 +10,16 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   name: "AddTask",
+
   data() {
     return {
       important: false,
       todo: ''
     }
   },
+
   methods: {
     addTask(e) {
       e.preventDefault();
@@ -38,7 +38,7 @@ export default {
     display: flex;
   }
 
-  .lbl {
+  .label {
     margin: auto;
     flex: 1;
     padding: 5px;
