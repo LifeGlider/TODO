@@ -6,10 +6,25 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
-    "turbolinks": "^5.2.0"
+    "@types/vue": "^2.0.0",
+    "axios": "^0.19.2",
+    "axios-on-rails": "^0.0.1",
+    "css-loader": "^3.5.3",
+    "rails-erb-loader": "^5.5.2",
+    "sass-loader": "^8.0.2",
+    "turbolinks": "^5.2.0",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.2",
+    "vue-paginate": "^3.6.0",
+    "vue-template-compiler": "^2.6.11",
+    "vue-turbolinks": "^2.1.0",
+    "vuex": "^3.3.0"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "deepmerge": "^4.2.2",
+    "fibers": "^5.0.0",
+    "sass": "^1.26.5",
     "webpack-dev-server": "^3.10.3"
   }
 }
