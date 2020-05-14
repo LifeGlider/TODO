@@ -1,4 +1,4 @@
-<%= render 'form' %>
+<%= render 'form' %><br>
 
 <center><h1>Listing Tasks</h1></center>
 
@@ -14,37 +14,47 @@
 </center>
 
 <br>
-<center><table>
-  <% @tasks.each do |task| %>
+<center><table class="table table-bordered table-dark">
+  <thead>
     <tr>
-      <% if task.important %>
-        <% if task.done %>
-          <td><span style="background-color:#ffcccb;">
-            <s><%= task.todo %></s>
-          </span></td>
-        <% else %>
-          <td><span style="background-color:#ffcccb;">
-            <%= link_to task.todo, task_path(task, { task: { done: true } }),
-                                   method: :patch,
-                                   data: { confirm: 'You done?' } %>
-          </span></td>
-        <% end %>
-      <% else %>
-        <% if task.done %>
-          <td><s><%= task.todo %></s></td>
-        <% else %>
-          <td><%= link_to task.todo, task_path(task, { task: { done: true } }),
-                                     method: :patch,
-                                     data: { confirm: 'You done?' } %></td>
-        <% end %>
-      <% end %>
-      <td><%= task.created_at.strftime("%Y-%m-%d") %></td>
-      <td><%= link_to 'Edit', edit_task_path(task) %></td>
-      <td><%= link_to 'D', task_path(task),
-                           method: :delete,
-                           data: { confirm: 'Are you sure?' } %></td>
+      <th scope="col">Task</th>
+      <th scope="col">Date</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <% if task.important %>
+          <% if task.done %>
+            <td><span style="background-color:#ffcccb;">
+              <s><%= task.todo %></s>
+            </span></td>
+          <% else %>
+            <td scope="col"><span style="background-color:#ffcccb;">
+              <%= link_to task.todo, task_path(task, { task: { done: true } }),
+                                    method: :patch,
+                                    data: { confirm: 'You done?' } %>
+            </span></td>
+          <% end %>
+        <% else %>
+          <% if task.done %>
+            <td scope="col"><s><%= task.todo %></s></td>
+          <% else %>
+            <td scope="col"><%= link_to task.todo, task_path(task, { task: { done: true } }),
+                                      method: :patch,
+                                      data: { confirm: 'You done?' } %></td>
+          <% end %>
+        <% end %>
+        <td scope="col"><%= task.created_at.strftime("%Y-%m-%d") %></td>
+        <td scope="col"><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td scope="col"><%= link_to 'D', task_path(task),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table></center>
 <br>
 <center><%= paginate @tasks %></center>
